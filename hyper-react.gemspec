@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'opal'
   s.add_dependency 'opal-activesupport'
   s.add_dependency 'hyper-store', '>= 0.2.1'
-  s.add_dependency 'hyperloop-config', '>= 0.9.7'
+  s.add_dependency 'hyperloop-config', git: 'https://github.com/janbiedermann/hyperloop-config.git'
   s.add_development_dependency 'rake'
   s.add_development_dependency 'rspec-rails'
   s.add_development_dependency 'timecop'
