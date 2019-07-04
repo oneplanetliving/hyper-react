@@ -15,6 +15,10 @@ module React
   class API
     @@component_classes = {}
 
+    def self.stateless?(ncc)
+      `typeof #{ncc} === 'function' && !(#{ncc}.prototype && #{ncc}.prototype.isReactComponent)`
+    end
+
     def self.import_native_component(opal_class, native_class)
       opal_class.instance_variable_set("@native_import", true)
       @@component_classes[opal_class] = native_class
@@ -26,8 +30,8 @@ module React
       is_component_class = `#{component}.prototype !== undefined` &&
                             (`!!#{component}.prototype.isReactComponent` ||
                              `!!#{component}.prototype.render`)
-      is_functional_component = `typeof #{component} === "function"`
-      unless is_component_class || is_functional_component
+      is_functional_component = `typeof #{component}.render === "function"`
+      unless is_component_class || stateless?(component) || is_functional_component
         raise 'does not appear to be a native react component'
       end
       component
