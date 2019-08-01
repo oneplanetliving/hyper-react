@@ -13,7 +13,7 @@ module React
                      thead time title tr track u ul var video wbr) +
                   # The SVG Tags
                   %w(circle clipPath defs ellipse g line linearGradient mask path pattern polygon polyline
-                  radialGradient rect stop svg text tspan)
+                  radialGradient rect stop svg text tspan use)
 
       # the present method is retained as a legacy behavior
       def present(component, *params, &children)
